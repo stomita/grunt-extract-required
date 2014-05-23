@@ -10,9 +10,7 @@ describe("extract-required-modules", function() {
     });
     filenames.forEach(function(filename) {
       var generated = fs.readFileSync(__dirname + '/../tmp/' + filename, 'utf-8');
-      console.log(generated);
       var expected = fs.readFileSync(__dirname + '/expected/' + filename, 'utf-8');
-      console.log(expected);
       assert.ok(generated === expected);
     });
   });

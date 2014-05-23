@@ -12,7 +12,7 @@
   "author": "Shinichi Tomita <shinichi.tomita@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "extract-required": "0.0.1"
+    "extract-required": "0.0.2"
   },
   "devDependencies": {
     "grunt-contrib-clean": "^0.5.0",
