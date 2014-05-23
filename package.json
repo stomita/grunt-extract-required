@@ -1,0 +1,25 @@
+{
+  "name": "grunt-extract-required",
+  "version": "0.0.0",
+  "description": "Grunt task to extract required modules in src files",
+  "scripts": {
+    "pretest": "grunt test",
+    "test": "mocha test/*.test.js --require intelli-espower-loader"
+  },
+  "directories": {
+    "test": "test/"
+  },
+  "author": "Shinichi Tomita <shinichi.tomita@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "extract-required": "0.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt": "^0.4.5",
+    "power-assert": "^0.7.2",
+    "mocha": "^1.19.0",
+    "espower-loader": "^0.7.1",
+    "intelli-espower-loader": "^0.1.0"
+  }
+}
