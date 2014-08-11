@@ -1,6 +1,6 @@
 {
   "name": "grunt-extract-required",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Grunt task to extract required modules in src files",
   "scripts": {
     "pretest": "grunt test",
@@ -12,7 +12,7 @@
   "author": "Shinichi Tomita <shinichi.tomita@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "extract-required": "0.0.2"
+    "extract-required": "0.0.3"
   },
   "devDependencies": {
     "grunt-contrib-clean": "^0.5.0",
