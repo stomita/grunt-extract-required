@@ -7,14 +7,11 @@ module.exports = function(grunt) {
     extract_required: {
       test: {
         files: [{
-          expand: true,
-          flatten: false,
-          cwd: 'test/fixtures/',
-          src: [ '**/*.js' ],
-          dest: 'tmp/',
-          ext: '.js'
+          src: 'test/fixtures/**/*.js',
+          dest: 'tmp/deps.js'
         }],
         options: {
+          baseDir: 'test/fixtures',
           openToGlobal: true
         }
       }

@@ -1,6 +1,6 @@
 require("fs");
 require("path");
-require("../test/fixtures/bbb");
+require("./bbb");
 require("url");
 global.require = function externalRequire(mpath) {
   if (mpath.charAt(0) === ".") {
