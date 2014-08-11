@@ -29,7 +29,11 @@ module.exports = function(grunt) {
       var modules = [];
       f.src.forEach(function(src) {
         var code = fs.readFileSync(src, 'utf-8');
-        extractRequiedModules(code, { src: src, cwd: options.baseDir || path.dirname(f.dest) }).forEach(function(m) {
+        extractRequiedModules(code, {
+          src: src,
+          cwd: options.baseDir || path.dirname(f.dest),
+          ignore: options.ignore
+        }).forEach(function(m) {
           modules[m] = true;
         });
       });
