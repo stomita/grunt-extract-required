@@ -23,13 +23,13 @@ function externalRequire(mpath) {
 
 module.exports = function(grunt) {
 
-  grunt.registerMultiTask('extract_required', 'extract requied modules from the code', function() {
+  grunt.registerMultiTask('extract_required', 'extract required modules from given JS codes', function() {
     var options = this.options();
     this.files.forEach(function(f) {
       var modules = [];
       f.src.forEach(function(src) {
-        var code = fs.readFileSync(src, 'utf-8')
-        extractRequiedModules(code, { src: src, cwd: path.dirname(f.dest) }).forEach(function(m) {
+        var code = fs.readFileSync(src, 'utf-8');
+        extractRequiedModules(code, { src: src, cwd: options.baseDir || path.dirname(f.dest) }).forEach(function(m) {
           modules[m] = true;
         });
       });
