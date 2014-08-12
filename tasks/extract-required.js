@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       }
       output.push(
         (options.openToGlobal ? "global.require = " : "module.exports = ") +
-        externalRequire.toString() + ";"
+        "function(name) { return require(name); };"
       );
       output = output.join('\n');
       grunt.file.write(f.dest, output, 'utf-8'); 
