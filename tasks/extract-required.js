@@ -38,13 +38,14 @@ module.exports = function(grunt) {
         });
       });
       var output = [];
+      output.push("module.exports = function(name) { return require(name); };");
       for (var m in modules) {
         output.push("require(\"" + m + "\");");
       }
-      output.push(
-        (options.openToGlobal ? "global.require = " : "module.exports = ") +
-        "function(name) { return require(name); };"
-      );
+      if (options.exposeToGlobal) {
+        var globalFn = options.exposeToGlobal === true ? "require" : options.exposeToGlobal;
+        output.push("global." + globalFn + " = module.exports;");
+      } 
       output = output.join('\n');
       grunt.file.write(f.dest, output, 'utf-8'); 
     });

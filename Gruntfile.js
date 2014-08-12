@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         }],
         options: {
           baseDir: 'test/fixtures',
-          openToGlobal: true
+          exposeToGlobal: true
         }
       }
     },
