@@ -1,18 +1,14 @@
+var requireCalled;
 module.exports = function (name) {
-  var grequire;
-  if (typeof global.require === 'function') {
-    grequire = global.require;
-    global.require = undefined;
-  }
-  var mod;
+  // prevent recursive require call
+  if (requireCalled) { return null; }
+  requireCalled = true;
   try {
     return require(name);
   } finally {
-    if (grequire) {
-      global.require = grequire;
-    }
+    requireCalled = false;
   }
-}
+};
 require("fs");
 require("path");
 require("./bbb");

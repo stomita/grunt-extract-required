@@ -3,18 +3,13 @@ var path = require('path');
 var extractRequiedModules = require('extract-required');
 
 var localRequire = function(name) {
-  var grequire;
-  if (typeof global.require === 'function') {
-    grequire = global.require;
-    global.require = undefined;
-  }
-  var mod;
+  // prevent recursive require call
+  if (requireCalled) { return null; }
+  requireCalled = true;
   try {
     return require(name);
   } finally {
-    if (grequire) {
-      global.require = grequire;
-    }
+    requireCalled = false;
   }
 };
 
@@ -35,7 +30,8 @@ module.exports = function(grunt) {
         });
       });
       var output = [];
-      output.push("module.exports = " + localRequire.toString());
+      output.push("var requireCalled;")
+      output.push("module.exports = " + localRequire.toString() + ";");
       for (var m in modules) {
         output.push("require(\"" + m + "\");");
       }
