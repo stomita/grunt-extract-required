@@ -2,24 +2,21 @@ var fs = require('fs');
 var path = require('path');
 var extractRequiedModules = require('extract-required');
 
-function externalRequire(mpath) {
-  if (mpath.charAt(0) === ".") {
-    var path = require('path');
-    try {
-      throw new Error();
-    } catch(e) {
-      var m = e.stack.split('\n')[2].match(/at ((\S+):\d+:\d+|[^\(]+\((\S+):\d+:\d+\))$/);
-      var src = m && (m[2] || m[3]);
-      if (src) {
-        mpath = path.resolve(path.dirname(src), mpath);
-        if (mpath.charAt(0) !== ".") {
-          mpath = "./" + mpath;
-        }
-      }
+var localRequire = function(name) {
+  var grequire;
+  if (typeof global.require === 'function') {
+    grequire = global.require;
+    global.require = undefined;
+  }
+  var mod;
+  try {
+    return require(name);
+  } finally {
+    if (grequire) {
+      global.require = grequire;
     }
   }
-  return require(mpath);
-}
+};
 
 module.exports = function(grunt) {
 
@@ -38,7 +35,7 @@ module.exports = function(grunt) {
         });
       });
       var output = [];
-      output.push("module.exports = function(name) { return require(name); };");
+      output.push("module.exports = " + localRequire.toString());
       for (var m in modules) {
         output.push("require(\"" + m + "\");");
       }
