@@ -4,7 +4,7 @@ var extractRequiedModules = require('extract-required');
 
 var localRequire = function(name) {
   // prevent recursive require call
-  if (requireCalled) { return null; }
+  if (requireCalled) { throw new Error("Cannot find module '" + name + "'"); }
   requireCalled = true;
   try {
     return require(name);
