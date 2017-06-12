@@ -12,14 +12,15 @@
   "author": "Shinichi Tomita <shinichi.tomita@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "extract-required": "0.0.3"
+    "extract-required": "0.0.3",
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt": "^0.4.5",
-    "power-assert": "^0.7.2",
-    "mocha": "^1.19.0",
-    "espower-loader": "^0.7.1",
-    "intelli-espower-loader": "^0.1.0"
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt": "^1.0.1",
+    "power-assert": "^1.4.4",
+    "mocha": "^3.4.2",
+    "espower-loader": "^1.2.2",
+    "intelli-espower-loader": "^1.0.1"
   }
 }
