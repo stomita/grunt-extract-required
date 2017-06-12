@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         output.push("global." + globalFn + " = module.exports;");
       } 
       output = output.join('\n');
-      grunt.file.write(f.dest, output, 'utf-8'); 
+      grunt.file.write(f.dest, output);
     });
   });
 
