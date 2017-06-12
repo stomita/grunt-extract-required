@@ -5,6 +5,5 @@ node_js:
   - 4
   - 5
   - 6
-  - latest
 before_script:
   - npm install -g grunt-cli
